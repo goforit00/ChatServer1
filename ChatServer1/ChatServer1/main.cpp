@@ -17,62 +17,10 @@
 using namespace std;
 
 
-class CLPrint :public CLFunctionProvider
-{
-public:
-	CLPrint();
-	~CLPrint();
-
-public:
-	virtual bool FuntionProviderRun(void* pContext);
-};
-
-CLPrint::CLPrint()
-{
-}
-
-CLPrint::~CLPrint()
-{
-}
-bool CLPrint::FuntionProviderRun(void* pContext)
-{
-	cout<<"in thread"<<endl;
-	long *pl =(long*)pContext;
-	*pl=(*pl)+1;
-	cout<<*(long*)pContext<<endl;
-}
-
-
-//----------------------------------------------------------------------------
-
-class  CLMessageObsever
-{
-public:
-	bool On_XXXMsg( CLMessage *pMsg );
-
-};
-
-typedef  bool  (CLMessageObsever::*CallBackForMessageLoop)(CLMessage*);
-
-class  CLChatServerMessageDeal : public CLFunctionProvider
-{
-public: 
-	CLChatServerMessageDeal( CLMessageQueue* pDealMsgQueue , CLMessageQueue* pSendMsgQueue );
-    virtual ~CLChatServerMessageDeal();
-	virtual bool FuntionProviderRun(void* pContext);
-private:
-    CLMessageQueue*  m_pDealMsgQueue;
-	CLMessageQueue*  m_pSendMsgQueue;
-
-	CLMessageObsever* m_pMsgObsever;
-	std::map<int MsgID , CallBackForMessageLoop> m_MsgCallBackFunMapTable;
-};
-
-
 int main()
 {
 	CLFuncProviderNameServer* pfpns = CLFuncProviderNameServer::GetInstance();
-	pfpns->Register( "print",new CLPrint() ); 
+	pfpns->Register( "print",new  ); 
 
 	CLThreadPool* pthreadpool = new CLThreadPool(5,"print");
 	long temp = 5;

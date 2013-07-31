@@ -14,7 +14,7 @@ public:
 private:
 	std::queue<CLMessage*> m_MessageQueue;
 	CLSemaphore m_Semaphone;
-	CLMutex m_Mutex;
+	CLSimpleMutex m_Mutex;
 };
 
 
