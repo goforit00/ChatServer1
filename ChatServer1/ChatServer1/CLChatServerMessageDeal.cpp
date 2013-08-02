@@ -17,6 +17,9 @@ CLChatServerMessageDeal::~CLChatServerMessageDeal()
 
 bool CLChatServerMessageDeal::Initialize()
 {
+	//进行处理消息的注册
+	Register( ADD_MESSAGE_ID , (CallBackForMessageLoop)(&CLMessageObsever::On_AddMsg));
+
 
 }
 
@@ -56,10 +59,8 @@ bool CLChatServerMessageDeal::FuntionProviderRun(void* pContext)
 	CLMessage*  pSendMsg = (m_pMsgObsever->*pFunction)( pMsg );
 	if( pSendMsg == NULL )
 	{
-		_Free( pMsg);
 		return false;
 	}
-	_Free(pMsg);
 
 	//把返回的消息发送给发送队列
 	bool r = m_pSendMsgQueue->PushMessage(pSendMsg);

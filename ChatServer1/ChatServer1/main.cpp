@@ -16,17 +16,33 @@
 #include "CLMessageQueue.h"
 using namespace std;
 
+#define  BUFF_SIZE  256
 
 int main()
 {
-	CLFuncProviderNameServer* pfpns = CLFuncProviderNameServer::GetInstance();
-	pfpns->Register( "print",new  ); 
+	//创建队列
+	CLMessageQueue  *pDealQueue = (CLMessageQueue*)_Malloc( sizeof( CLMessageQueue) );
+	CLMessageQueue  *pSendQueue = (CLMessageQueue*)_Malloc( sizeof( CLMessageQueue) );
 
-	CLThreadPool* pthreadpool = new CLThreadPool(5,"print");
-	long temp = 5;
-	pthreadpool->ThreadsRun((void*)&temp);
-	sleep(1);
-	cout<<temp<<endl;
-	//    sleep(3);
+	//注册处理线程
+	CLFuncProviderNameServer* pfpns = CLFuncProviderNameServer::GetInstance();
+	pfpns->Register( "DealMsg",new  CLChatServerMessageDeal(pDealQueue , pSendQueue) ); 
+
+	//让处理线程运行起来
+	CLThreadPool* pThreadPool_DealMsg = new CLThreadPool(5,"DealMsg");
+	pThreadPool_DealMsg->ThreadsRun(NULL);
+
+	//创建发送线程
+	pfpns->Register("SendMsg", new CLChatServerMessageSend(pSendQueue) );
+	
+	//让发送线程运行起来
+	CLThreadPool* pThreadPool_SendMsg = new CLThreadPool(1 , "SendMsg");
+	pThreadPool_SendMsg->ThreadsRun(NULL);
+
+	//主线程进程消息的接收
+    CLChatServerReceiveMessage *pChatRecMsg = new CLChatServerReceiveMessage();
+	pChatRecMsg->ChatServerReceiveMessageRun((void*)pDealQueue);
+
+
 	pthread_exit(NULL);
 }

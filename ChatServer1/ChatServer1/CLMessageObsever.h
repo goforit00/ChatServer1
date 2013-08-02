@@ -4,8 +4,11 @@
 class  CLMessageObsever
 {
 public:
-	CLMessage* On_XXXMsg( CLMessage *pMsg );
+	CLMessageObsever();
+	~CLMessageObsever();
 
+public:
+	CLMessage* On_AddMsg( CLMessage *pMsg );
 };
 
 #endif

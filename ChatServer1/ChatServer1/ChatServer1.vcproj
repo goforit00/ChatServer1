@@ -166,14 +166,30 @@
 	</References>
 	<Files>
 		<Filter
-			Name="源文件"
+			Name="头文件"
 			>
 			<File
 				RelativePath=".\CLChatServerMessageDeal.h"
 				>
 			</File>
 			<File
+				RelativePath=".\CLChatServerMessageSend.h"
+				>
+			</File>
+			<File
+				RelativePath=".\CLChatServerReceiveMessage.h"
+				>
+			</File>
+			<File
+				RelativePath=".\CLCommunicate.h"
+				>
+			</File>
+			<File
 				RelativePath=".\CLCriticalSection.h"
+				>
+			</File>
+			<File
+				RelativePath=".\CLDate.h"
 				>
 			</File>
 			<File
@@ -182,6 +198,10 @@
 			</File>
 			<File
 				RelativePath=".\CLFunctionProvider.h"
+				>
+			</File>
+			<File
+				RelativePath=".\CLLogger.h"
 				>
 			</File>
 			<File
@@ -201,11 +221,19 @@
 				>
 			</File>
 			<File
+				RelativePath=".\CLMessageDeserializer.h"
+				>
+			</File>
+			<File
 				RelativePath=".\CLMessageObsever.h"
 				>
 			</File>
 			<File
 				RelativePath=".\CLMessageQueue.h"
+				>
+			</File>
+			<File
+				RelativePath=".\CLMessageSerializer.h"
 				>
 			</File>
 			<File
@@ -244,9 +272,13 @@
 				RelativePath=".\CLThreadPool.h"
 				>
 			</File>
+			<File
+				RelativePath=".\CLUDPCommunicate.h"
+				>
+			</File>
 		</Filter>
 		<Filter
-			Name="头文件"
+			Name="源文件"
 			Filter="h;hpp;hxx;hm;inl;inc;xsd"
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
@@ -255,7 +287,23 @@
 				>
 			</File>
 			<File
+				RelativePath=".\CLChatServerMessageSend.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\CLChatServerReceiveMessage.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\CLCommunicate.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\CLCriticalSection.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\CLDate.cpp"
 				>
 			</File>
 			<File
@@ -264,6 +312,10 @@
 			</File>
 			<File
 				RelativePath=".\CLFunctionProvider.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\CLLogger.cpp"
 				>
 			</File>
 			<File
@@ -283,11 +335,19 @@
 				>
 			</File>
 			<File
+				RelativePath=".\CLMessageDeserializer.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\CLMessageObsever.cpp"
 				>
 			</File>
 			<File
 				RelativePath=".\CLMessageQueue.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\CLMessageSerializer.cpp"
 				>
 			</File>
 			<File
@@ -324,6 +384,10 @@
 			</File>
 			<File
 				RelativePath=".\CLThreadPool.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\CLUDPCommunicate.cpp"
 				>
 			</File>
 			<File
